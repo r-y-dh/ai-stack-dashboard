@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Update Dashboard — Riyadh's Stack</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+
+  <!-- Header -->
+  <header>
+    <div class="header-top">
+      <h1>AI Stack <span>Intelligence</span></h1>
+      <div class="header-right">
+        <span class="last-updated">↻ Last researched: 6 March 2026</span>
+        <button class="refresh-btn" id="refresh-btn" onclick="handleRefresh()">
+          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13.5 8A5.5 5.5 0 1 1 8 2.5c1.6 0 3.04.68 4.06 1.77L13.5 5.5"/>
+            <path d="M13.5 2v3.5H10"/>
+          </svg>
+          Refresh
+        </button>
+      </div>
+    </div>
+    <p class="tagline">What's changed across your tools — and what it actually means for how you work.</p>
+  </header>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-num" id="stat-total" style="color:var(--green)">18</span>
+      <span class="stat-label">Updates tracked</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" id="stat-high" style="color:var(--accent)">7</span>
+      <span class="stat-label">High impact</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" id="stat-cross" style="color:var(--accent2)">6</span>
+      <span class="stat-label">Cross-tool unlocks</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" id="stat-tools" style="color:var(--muted)">6</span>
+      <span class="stat-label">Tools covered</span>
+    </div>
+  </div>
+
+  <!-- Search -->
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input id="search" type="text" placeholder="Search updates, tools, features…">
+  </div>
+
+  <!-- Filters + View toggle -->
+  <div class="filters">
+    <span class="filter-label">Filter</span>
+    <button class="filter-btn active" data-filter="all">
+      <span class="dot" style="background:#71717a"></span> All
+    </button>
+    <button class="filter-btn" data-filter="claude">
+      <span class="dot" style="background:var(--claude)"></span> Claude
+    </button>
+    <button class="filter-btn" data-filter="notion">
+      <span class="dot" style="background:var(--notion)"></span> Notion
+    </button>
+    <button class="filter-btn" data-filter="figma">
+      <span class="dot" style="background:var(--figma)"></span> Figma
+    </button>
+    <button class="filter-btn" data-filter="linear">
+      <span class="dot" style="background:var(--linear)"></span> Linear
+    </button>
+    <button class="filter-btn" data-filter="slack">
+      <span class="dot" style="background:var(--slack)"></span> Slack
+    </button>
+    <button class="filter-btn" data-filter="openai">
+      <span class="dot" style="background:var(--openai)"></span> OpenAI
+    </button>
+    <button class="filter-btn" data-filter="cross">
+      <span class="dot" style="background:var(--cross)"></span> Cross-tool
+    </button>
+    <button class="add-btn" id="add-btn">+ Add Update</button>
+    <div class="view-toggle">
+      <button class="view-btn active" data-view="list">List</button>
+      <button class="view-btn" data-view="grid">Grid</button>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <div id="cards-container">
+
+    <!-- ══ CLAUDE ══ -->
+    <div class="card" data-tool="claude" data-tags="claude cowork skills plugins memory model sonnet opus">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge claude">Claude</span>
+          <span class="impact-badge impact-high">High impact</span>
+        </div>
+        <span class="card-date">Feb 2026</span>
+      </div>
+      <h3>Cowork Skills & Plugin Marketplace</h3>
+      <p class="card-desc">Claude Cowork now supports installable Skills — reusable instruction sets that teach Claude how to perform specific tasks (PPTX, DOCX, XLSX, PDF creation, scheduling, etc.). A private Plugin Marketplace lets teams bundle MCP connectors + Skills into shareable packages.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">You can now automate repetitive knowledge-work tasks — generate decks, briefs, reports — with one instruction. Skills are the "saved workflow" layer you've been missing. You're already using this right now.</div>
+      </div>
+      <div class="integrations">
+        <span class="int-label">Connects to:</span>
+        <span class="int-pill">Notion</span>
+        <span class="int-pill">Figma</span>
+        <span class="int-pill">Linear</span>
+        <span class="int-pill">Slack</span>
+      </div>
+    </div>
+
+    <div class="card" data-tool="claude" data-tags="claude model sonnet opus context window">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge claude">Claude</span>
+          <span class="impact-badge impact-high">High impact</span>
+        </div>
+        <span class="card-date">Feb 2026</span>
+      </div>
+      <h3>Sonnet 4.6 — 1M token context window (beta)</h3>
+      <p class="card-desc">Sonnet 4.6 (now the default model) delivers ~95% of Opus quality at 1/5th the API cost, and introduces a 1 million token context window in beta. Opus 4.6 is optimised for coding and reasoning.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">You can now feed entire codebases, design system docs, or full Notion workspaces into a single conversation without chunking. For design system work: dump your full token spec + component library + PRD + engineering constraints into one Claude session.</div>
+      </div>
+    </div>
+
+    <div class="card" data-tool="claude" data-tags="claude mcp connectors google notion figma calendar drive gmail">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge claude">Claude</span>
+          <span class="impact-badge impact-high">High impact</span>
+        </div>
+        <span class="card-date">Feb 2026</span>
+      </div>
+      <h3>12 New MCP Connectors</h3>
+      <p class="card-desc">Google Calendar, Google Drive, Gmail, DocuSign, Apollo, Clay, Outreach, Similarweb, MSCI, LegalZoom, FactSet, and WordPress added natively to the Cowork connector library.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">Claude can now read your calendar, draft emails, pull files from Drive, and act across your full productivity stack without browser switching. Combine with Notion + Linear connectors for true cross-app workflows.</div>
+      </div>
+      <div class="integrations">
+        <span class="int-label">Connects to:</span>
+        <span class="int-pill">Google Drive</span>
+        <span class="int-pill">Gmail</span>
+        <span class="int-pill">Google Calendar</span>
+      </div>
+    </div>
+
+    <div class="card" data-tool="claude" data-tags="claude scheduling tasks recurring automated digest">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge claude">Claude</span>
+          <span class="impact-badge impact-medium">Medium impact</span>
+        </div>
+        <span class="card-date">Feb 2026</span>
+      </div>
+      <h3>Scheduled Tasks in Cowork</h3>
+      <p class="card-desc">Cowork now supports recurring and on-demand scheduled tasks — Claude can run a workflow automatically on a cron schedule without you being present.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">Set Claude to research and compile a weekly AI update digest every Friday morning, or auto-generate a Linear sprint summary before your Monday standup. You're setting one up right now.</div>
+      </div>
+    </div>
+
+    <div class="card" data-tool="claude" data-tags="claude memory context md init project">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge claude">Claude</span>
+          <span class="impact-badge impact-medium">Medium impact</span>
+        </div>
+        <span class="card-date">Jan 2026</span>
+      </div>
+      <h3>Persistent Memory via CLAUDE.md</h3>
+      <p class="card-desc">Cowork sessions start blank by default (privacy by design). The recommended pattern is a CLAUDE.md file that Claude reads at session start — scanned and written automatically via /init. Acts as the project's persistent brain.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">Create a CLAUDE.md in your working folder with your stack, preferences, naming conventions, and recurring context. Claude won't need re-briefing each session. Essential for design system work where conventions are complex.</div>
+      </div>
+    </div>
+
+    <div class="card" data-tool="claude" data-tags="claude mcp apps interactive ui forms dashboards">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge claude">Claude</span>
+          <span class="impact-badge impact-watch">Worth watching</span>
+        </div>
+        <span class="card-date">Jan 2026</span>
+      </div>
+      <h3>MCP Apps — Interactive UI in Claude responses</h3>
+      <p class="card-desc">MCP tools can now return interactive UI components — dashboards, forms, data visualisations — that render directly inside the Claude conversation. Claude, ChatGPT, VS Code and Goose have shipped support.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">Early-stage but significant: imagine a Linear sprint board or Figma component browser rendering inside a Claude chat. The convergence of AI chat + embedded tooling is starting here.</div>
+      </div>
+    </div>
+
+    <!-- ══ NOTION ══ -->
+    <div class="card" data-tool="notion" data-tags="notion agents autonomous ai 3.0 workflows database">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge notion">Notion</span>
+          <span class="impact-badge impact-high">High impact</span>
+        </div>
+        <span class="card-date">Sep 2025</span>
+      </div>
+      <h3>Notion AI Agents 3.0 — Autonomous multi-step tasks</h3>
+      <p class="card-desc">Notion's AI Agent can now run autonomously for up to 20 minutes, executing multi-step workflows: building project launch plans, compiling feedback from multiple sources, drafting reports, updating databases at scale, and creating interconnected page structures.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">You can delegate "compile all design system feedback from Q4 and create a prioritised issues database" to Notion's Agent and walk away. This is the biggest upgrade to Notion's AI since launch — it's no longer just a writing assistant.</div>
+      </div>
+    </div>
+
+    <div class="card" data-tool="notion" data-tags="notion custom agents scheduled triggers 24/7 automation">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge notion">Notion</span>
+          <span class="impact-badge impact-high">High impact</span>
+        </div>
+        <span class="card-date">Jan 2026</span>
+      </div>
+      <h3>Custom Agents — Scheduled, trigger-based automation</h3>
+      <p class="card-desc">Custom Agents run without any manual prompting. Set a job and a trigger (schedule, event, condition) and they operate 24/7. Free to try until May 2026, then Notion credits as an add-on.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">You could build a Notion Agent that monitors a "Bookmarks" database, fetches article content weekly, and auto-tags it by relevance to your design system work. Replaces a lot of manual curation. Combine with Claude's scheduled digest for double coverage.</div>
+      </div>
+    </div>
+
+    <div class="card" data-tool="notion" data-tags="notion mail email inbox database ai labeling">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge notion">Notion</span>
+          <span class="impact-badge impact-medium">Medium impact</span>
+        </div>
+        <span class="card-date">Apr 2025</span>
+      </div>
+      <h3>Notion Mail — Inbox as a Notion database</h3>
+      <p class="card-desc">Notion Mail transforms your email inbox into a Notion database with AI auto-labelling, custom views, snippets, and integrated scheduling. Save emails directly to Notion pages for project documentation.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">Client feedback emails, stakeholder threads, product briefs — all automatically filed as Notion pages. Saves the "DM myself to follow up" habit you mentioned. Pairs well with your Claude + Notion connector for summarising email threads.</div>
+      </div>
+    </div>
+
+    <div class="card" data-tool="notion" data-tags="notion calendar google search ai meeting prep">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge notion">Notion</span>
+          <span class="impact-badge impact-medium">Medium impact</span>
+        </div>
+        <span class="card-date">Nov 2025</span>
+      </div>
+      <h3>Notion AI can search Google + your Calendar</h3>
+      <p class="card-desc">Notion AI can now search the web and pull from your Notion Calendar in the same AI conversation — enabling meeting prep, schedule analysis, and real-time research inside Notion.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">Ask "what's happening in AI design tools this week and what do I have scheduled around it?" — Notion answers with live web data plus your calendar. Useful for prepping for client or team meetings with current context.</div>
+      </div>
+    </div>
+
+    <!-- ══ FIGMA ══ -->
+    <div class="card" data-tool="figma" data-tags="figma mcp server code connect github repository">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge figma">Figma</span>
+          <span class="impact-badge impact-high">High impact</span>
+        </div>
+        <span class="card-date">2025–2026</span>
+      </div>
+      <h3>Figma MCP Server — GA for all users</h3>
+      <p class="card-desc">The Figma MCP server is now generally available. It pipes Figma design context (components, tokens, layout specs) directly into AI code editors. Code Connect UI now lets you map Figma components to GitHub code files without writing code.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">You can now use Claude (via MCP) to read your Figma components and generate production-accurate implementation code. For design system handoff: the Figma-to-code gap shrinks significantly. Claude + Figma MCP is a genuine design system acceleration stack.</div>
+      </div>
+      <div class="integrations">
+        <span class="int-label">Connects to:</span>
+        <span class="int-pill">Claude</span>
+        <span class="int-pill">GitHub</span>
+        <span class="int-pill">VS Code</span>
+      </div>
+    </div>
+
+    <div class="card" data-tool="figma" data-tags="figma make ai prompt to code prototype app">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge figma">Figma</span>
+          <span class="impact-badge impact-medium">Medium impact</span>
+        </div>
+        <span class="card-date">2025</span>
+      </div>
+      <h3>Figma Make — Prompt to working prototype</h3>
+      <p class="card-desc">Figma Make converts written descriptions or existing designs into working prototypes or app code. AI-powered; targets all skill levels for rapid exploration.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">Rapid component exploration and throwaway prototyping without a dev dependency. For design system work: useful for quickly stress-testing a component pattern before committing it to the library. Not production-ready output — more of a discovery layer.</div>
+      </div>
+    </div>
+
+    <div class="card" data-tool="figma" data-tags="figma make extensibility connectors amplitude dovetail zeroheight mcp custom">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge figma">Figma</span>
+          <span class="impact-badge impact-watch">Worth watching</span>
+        </div>
+        <span class="card-date">2025–2026</span>
+      </div>
+      <h3>Make Extensibility — Custom MCP + new connectors</h3>
+      <p class="card-desc">Figma Make now supports custom remote MCP servers and ships connectors for Amplitude, Box, Dovetail, Granola, Marvin, and zeroheight.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">The Figma + Dovetail connector is particularly relevant: research insights can flow directly into design context. The zeroheight connector means your design system docs site can stay in sync with Figma changes. Watch this space — the MCP ecosystem here is moving fast.</div>
+      </div>
+      <div class="integrations">
+        <span class="int-label">Connects to:</span>
+        <span class="int-pill">Dovetail</span>
+        <span class="int-pill">Zeroheight</span>
+        <span class="int-pill">Amplitude</span>
+      </div>
+    </div>
+
+    <!-- ══ LINEAR ══ -->
+    <div class="card" data-tool="linear" data-tags="linear ai coding agents factory deeplink context">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge linear">Linear</span>
+          <span class="impact-badge impact-high">High impact</span>
+        </div>
+        <span class="card-date">Feb 2026</span>
+      </div>
+      <h3>Deeplink to AI Coding Agents</h3>
+      <p class="card-desc">Linear issues now auto-assemble the right context and can be delegated directly to AI coding agents (e.g. Factory). The agent spins up a remote workspace and takes a first pass at the issue.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">For design system engineering tickets: assign an issue to an AI coding agent for first-pass implementation (tokens, component scaffolding, test setup). Humans review and iterate. Reduces the "waiting for dev capacity" bottleneck in design system work.</div>
+      </div>
+      <div class="integrations">
+        <span class="int-label">Connects to:</span>
+        <span class="int-pill">Claude (via MCP)</span>
+        <span class="int-pill">Factory AI</span>
+      </div>
+    </div>
+
+    <div class="card" data-tool="linear" data-tags="linear product intelligence triage suggestion team routing">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge linear">Linear</span>
+          <span class="impact-badge impact-medium">Medium impact</span>
+        </div>
+        <span class="card-date">2025</span>
+      </div>
+      <h3>Product Intelligence — AI issue triage</h3>
+      <p class="card-desc">Linear now assesses new issues automatically, triages them, and suggests which team should pick up the work — reducing manual backlog management overhead.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">Inbound design system requests get auto-triaged to the right team/component owner without someone manually routing them. Reduces the "ticket fell through the cracks" problem in multi-team design system governance.</div>
+      </div>
+    </div>
+
+    <!-- ══ OPENAI ══ -->
+    <div class="card" data-tool="openai" data-tags="openai gpt chatgpt model gpt5 5.2 5.3">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge openai">OpenAI</span>
+          <span class="impact-badge impact-watch">Worth watching</span>
+        </div>
+        <span class="card-date">Feb–Mar 2026</span>
+      </div>
+      <h3>GPT-5.2 + 5.3 Instant — Smarter, faster responses</h3>
+      <p class="card-desc">GPT-5.2 improves info-seeking, technical writing, and translation. GPT-5.3 Instant reduces unnecessary caveats and delivers richer web search results. Model churn: OpenAI retiring GPT-4o, 4.1, and older o-series models.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">If you use ChatGPT for second-opinion research or writing tasks, 5.3 Instant is meaningfully less verbose and better at technical content. Worth a re-eval if you moved away from it. Note: OpenAI also confirmed ads are coming to free/Go tiers.</div>
+      </div>
+    </div>
+
+    <div class="card" data-tool="openai" data-tags="openai chatgpt projects knowledge base slack drive sources">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge openai">OpenAI</span>
+          <span class="impact-badge impact-medium">Medium impact</span>
+        </div>
+        <span class="card-date">Early 2026</span>
+      </div>
+      <h3>ChatGPT Projects — Living knowledge base with Slack + Drive</h3>
+      <p class="card-desc">Projects now lets you build a living knowledge base from multiple sources: Slack links, Drive files, saved ChatGPT responses, and quick text inputs — all in one persistent project context.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">Comparable to Claude's CLAUDE.md pattern but with richer multi-source ingestion. If you use ChatGPT for specific tasks, this makes it significantly stickier. Competitive pressure on Claude's memory/context approach — worth watching how Anthropic responds.</div>
+      </div>
+      <div class="integrations">
+        <span class="int-label">Connects to:</span>
+        <span class="int-pill">Slack</span>
+        <span class="int-pill">Google Drive</span>
+      </div>
+    </div>
+
+    <!-- ══ CROSS-TOOL ══ -->
+    <div class="card" data-tool="cross" data-tags="cross claude notion workflow memory agent automation">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge cross">Cross-tool</span>
+          <span class="impact-badge impact-high">High impact</span>
+        </div>
+        <span class="card-date">Now possible</span>
+      </div>
+      <h3>Claude + Notion — Bi-directional workspace intelligence</h3>
+      <p class="card-desc">Claude's Notion MCP connector + Notion's Custom Agents + Claude's 1M context window creates a genuinely powerful combination for knowledge workers.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">Pattern: Notion Agent monitors bookmarks/inboxes and files content → Claude reads Notion via MCP and generates contextualised summaries → results written back to Notion. Fully automated research pipeline. Replaces the bookmark-and-forget habit entirely.</div>
+      </div>
+      <div class="integrations">
+        <span class="int-label">Stack:</span>
+        <span class="int-pill">Claude</span>
+        <span class="int-pill">Notion</span>
+      </div>
+    </div>
+
+    <div class="card" data-tool="cross" data-tags="cross claude figma design system tokens code mcp handoff">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge cross">Cross-tool</span>
+          <span class="impact-badge impact-high">High impact</span>
+        </div>
+        <span class="card-date">Now possible</span>
+      </div>
+      <h3>Claude + Figma MCP — Design-to-code handoff, accelerated</h3>
+      <p class="card-desc">Claude (via Figma MCP) can read your Figma components, extract token values, understand layout specs, and generate implementation code — all without leaving a Claude session.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">For design system work: point Claude at a Figma component, ask it to generate React + CSS token implementation, cross-reference against your existing codebase, and flag inconsistencies. The Figma MCP plugin in this Cowork session already enables this.</div>
+      </div>
+      <div class="integrations">
+        <span class="int-label">Stack:</span>
+        <span class="int-pill">Claude</span>
+        <span class="int-pill">Figma</span>
+        <span class="int-pill">GitHub</span>
+      </div>
+    </div>
+
+    <div class="card" data-tool="cross" data-tags="cross claude linear ai coding agents issue handoff design system">
+      <div class="card-header">
+        <div class="card-meta">
+          <span class="tool-badge cross">Cross-tool</span>
+          <span class="impact-badge impact-high">High impact</span>
+        </div>
+        <span class="card-date">Now possible</span>
+      </div>
+      <h3>Claude + Linear — AI-assisted design system ticket workflow</h3>
+      <p class="card-desc">Claude reads Linear issues (via MCP), generates implementation specs or first-draft code, which can then be sent back to Linear or delegated to a coding agent via Linear's new deeplink feature.</p>
+      <div class="means-block">
+        <div class="means-label">What it means for you</div>
+        <div class="means-text">Create a Linear issue for "Add dark mode tokens to Button component" → Claude reads the issue + your Figma file → generates a token diff + implementation spec → coding agent takes first pass. Human reviews. This loop is now technically achievable with your current stack.</div>
+      </div>
+      <div class="integrations">
+        <span class="int-label">Stack:</span>
+        <span class="int-pill">Claude</span>
+        <span class="int-pill">Linear</span>
+        <span class="int-pill">Figma</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="empty">
+    <p style="font-size:32px;margin-bottom:12px">🔍</p>
+    <p>No updates match that filter.<br>Try a different tool or clear your search.</p>
+  </div>
+
+  <!-- Add Update Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <h2>Add Update</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="f-tool">Tool</label>
+          <select id="f-tool">
+            <option value="claude">Claude</option>
+            <option value="notion">Notion</option>
+            <option value="figma">Figma</option>
+            <option value="linear">Linear</option>
+            <option value="slack">Slack</option>
+            <option value="openai">OpenAI</option>
+            <option value="cross">Cross-tool</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="f-impact">Impact</label>
+          <select id="f-impact">
+            <option value="impact-high">High impact</option>
+            <option value="impact-medium">Medium impact</option>
+            <option value="impact-watch">Worth watching</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="f-date">Date</label>
+        <input type="month" id="f-date">
+      </div>
+      <div class="form-group">
+        <label for="f-title">Title</label>
+        <input type="text" id="f-title" placeholder="Update title…">
+      </div>
+      <div class="form-group">
+        <label for="f-desc">Description</label>
+        <textarea id="f-desc" rows="3" placeholder="What changed?"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="f-means">What it means for you</label>
+        <textarea id="f-means" rows="3" placeholder="Practical implication…"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="f-tags">Tags <span style="font-weight:400;text-transform:none;letter-spacing:0">(space-separated)</span></label>
+        <input type="text" id="f-tags" placeholder="e.g. claude mcp automation">
+      </div>
+      <div class="form-group">
+        <label for="f-integrations">Connects to <span style="font-weight:400;text-transform:none;letter-spacing:0">(comma-separated, optional)</span></label>
+        <input type="text" id="f-integrations" placeholder="e.g. Notion, Figma">
+      </div>
+      <div class="modal-actions">
+        <button class="modal-cancel" id="modal-cancel">Cancel</button>
+        <button class="modal-save" id="modal-save">Save Update</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <span>Sources: <a href="https://support.claude.com/en/articles/12138966-release-notes" target="_blank">Claude Release Notes</a> · <a href="https://www.notion.com/releases" target="_blank">Notion Releases</a> · <a href="https://www.figma.com/release-notes/" target="_blank">Figma Release Notes</a> · <a href="https://linear.app/changelog" target="_blank">Linear Changelog</a></span>
+    <span>Refresh this weekly via Claude's scheduled digest →</span>
+  </footer>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
